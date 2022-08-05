@@ -1,0 +1,60 @@
+## Hangman# project ##
+import random
+import hangman_art
+import hangman_words
+from replit import clear
+###
+#If you are not checking the code/playing on Replit - coment off line 5 "from replit import clear", and "#" line number 33. 
+###
+
+word_list = [hangman_words]
+chosen_word = random.choice(hangman_words.word_list)
+word_length = len(chosen_word)
+GAME_OVER = False
+lives = 6
+guessed_letters = []
+print(hangman_art.logo)
+
+#Testing code
+#print(f'\nSolution is: {chosen_word}.')
+
+#Creating "_" list
+display = []
+
+for _ in range(word_length):
+    display += "_"
+print(display)
+if word_length > 6:
+    print("Oh... That's a hard one. Good luck!")
+
+while not GAME_OVER:
+    guess = input("Which letter do you want to check?\n").lower()
+    guessed_letters.append(guess)
+    clear()
+    #Checking if user provided same letter as before
+    if guess in guessed_letters:
+        print(f"You've already provided {guess}!")
+
+    for position in range(word_length):
+        letter = chosen_word[position]
+
+        if letter == guess:
+            display[position] = letter
+
+    if guess not in chosen_word:
+        lives -= 1
+        print(f"Letter {guess} is not in the sentence. You've lost a life!")
+
+        if lives == 0:
+            GAME_OVER = True
+            print(hangman_art.over)
+
+    #Joining all elements on the list as _ _ x _ y ##
+    print(f"{' '.join(display)}")
+
+    if "_" not in display:
+        GAME_OVER = True
+        print(hangman_art.congrats)
+        print("You win!")
+    print(hangman_art.stages[lives])
+## Ende!
