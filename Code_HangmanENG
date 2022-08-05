@@ -1,4 +1,5 @@
 ## Hangman# project ##
+## Hangman# project ##
 import random
 import hangman_art
 import hangman_words
@@ -29,32 +30,36 @@ if word_length > 6:
 
 while not GAME_OVER:
     guess = input("Which letter do you want to check?\n").lower()
-    guessed_letters.append(guess)
+    
     clear()
     #Checking if user provided same letter as before
     if guess in guessed_letters:
-        print(f"You've already provided {guess}!")
+        print(f"You've already checked {guess}!\n")
 
+    if guess not in chosen_word:
+      lives -= 1
+      print(f"Letter {guess} is not in the sentence. You've lost a life!\n")
+
+      if lives == 0:
+          GAME_OVER = True
+          print(hangman_art.over)
+          print(f"The word was {chosen_word}.")
+          break
+    
     for position in range(word_length):
         letter = chosen_word[position]
 
         if letter == guess:
             display[position] = letter
 
-    if guess not in chosen_word:
-        lives -= 1
-        print(f"Letter {guess} is not in the sentence. You've lost a life!")
 
-        if lives == 0:
-            GAME_OVER = True
-            print(hangman_art.over)
-
+    guessed_letters.append(guess)
     #Joining all elements on the list as _ _ x _ y ##
     print(f"{' '.join(display)}")
-
+    print(f"You've already provided: {' '.join(guessed_letters)}.")
+    
     if "_" not in display:
         GAME_OVER = True
         print(hangman_art.congrats)
-        print("You win!")
     print(hangman_art.stages[lives])
-## Ende!
+## Ende! ##
