@@ -1,4 +1,4 @@
-## Words to be imported (File) ##
+## Words to be imported (File) Thank you Dr. Yu for everything ♥ ##
 word_list = [
 'abruptly', 
 'absurd', 
