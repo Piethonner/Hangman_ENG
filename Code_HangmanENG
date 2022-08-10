@@ -2,10 +2,9 @@
 import random
 import hangman_art
 import hangman_words
-from replit import clear
-###
-#If you are not checking the code/playing on Replit - coment off line 5 "from replit import clear", and "#" line number 33. 
-###
+#from replit import clear
+
+#Line 5 import from replit - clear() used in line 32. 
 
 word_list = [hangman_words]
 chosen_word = random.choice(hangman_words.word_list)
@@ -30,7 +29,7 @@ if word_length > 6:
 while not GAME_OVER:
     guess = input("Which letter do you want to check?\n").lower()
     
-    clear()
+    #clear()
     #Checking if user provided same letter as before
     if guess in guessed_letters:
         print(f"You've already checked {guess}!\n")
