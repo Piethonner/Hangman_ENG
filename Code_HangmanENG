@@ -60,4 +60,3 @@ while not GAME_OVER:
         GAME_OVER = True
         print(hangman_art.congrats)
     print(hangman_art.stages[lives])
-## Ende! ##
