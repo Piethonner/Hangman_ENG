@@ -1,10 +1,11 @@
-## Hangman# project ##
+# Hangman# project
 import random
 import hangman_art
 import hangman_words
-#from replit import clear
 
-#Line 5 import from replit - clear() used in line 32. 
+# from replit import clear
+
+# Line 5 import from replit - clear() used in line 32.
 
 word_list = [hangman_words]
 chosen_word = random.choice(hangman_words.word_list)
@@ -14,10 +15,10 @@ lives = 6
 guessed_letters = []
 print(hangman_art.logo)
 
-#Testing code
-#print(f'\nSolution is: {chosen_word}.')
+# Testing code
+# print(f'\nSolution is: {chosen_word}.')
 
-#Creating "_" list
+# Creating "_" list
 display = []
 
 for _ in range(word_length):
@@ -28,34 +29,33 @@ if word_length > 6:
 
 while not GAME_OVER:
     guess = input("Which letter do you want to check?\n").lower()
-    
-    #clear()
-    #Checking if user provided same letter as before
+
+    # clear()
+    # Checking if user provided same letter as before
     if guess in guessed_letters:
         print(f"You've already checked {guess}!\n")
 
     if guess not in chosen_word:
-      lives -= 1
-      print(f"Letter {guess} is not in the sentence. You've lost a life!\n")
+        lives -= 1
+        print(f"Letter {guess} is not in the sentence. You've lost a life!\n")
 
-      if lives == 0:
-          GAME_OVER = True
-          print(hangman_art.over)
-          print(f"The word was {chosen_word}.")
-          break
-    
+        if lives == 0:
+            GAME_OVER = True
+            print(hangman_art.over)
+            print(f"The word was {chosen_word}.")
+            break
+
     for position in range(word_length):
         letter = chosen_word[position]
 
         if letter == guess:
             display[position] = letter
 
-
     guessed_letters.append(guess)
-    #Joining all elements on the list as _ _ x _ y ##
+    # Joining all elements on the list as _ _ x _ y ##
     print(f"{' '.join(display)}")
     print(f"You've already provided: {' '.join(guessed_letters)}.")
-    
+
     if "_" not in display:
         GAME_OVER = True
         print(hangman_art.congrats)
