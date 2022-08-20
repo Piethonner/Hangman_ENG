@@ -2,7 +2,6 @@
 import random
 import hangman_art
 import hangman_words
-
 # from replit import clear
 
 # Line 5 import from replit - clear() used in line 32.
